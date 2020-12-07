@@ -6,17 +6,25 @@
         <div @click="changeTime(date,data)">
           <div class="calendar-day">{{ data.day.split('-').slice(2).join('-') }}</div>
           <div v-for="(item, index) in calendarData" :key="index">
-            <div v-if="(item.months).indexOf(data.day.split('-').slice(1)[0])!=-1">
-              <div v-if="(item.days).indexOf(data.day.split('-').slice(2).join('-'))!=-1">
-                  <div class="is-selected">{{item.content}}</div>
-              </div>
-              <div v-else></div>
+            <div v-if="item === data.day">
+              <el-badge is-dot class="item"></el-badge>
             </div>
-            <div v-else></div>
           </div>
         </div>
       </template>
     </el-calendar>
+    <div class="schedule-card">
+      <ul>
+        <li
+          v-for="(item, index) in scheduleList"
+          :key="index"
+        >
+          <h3>{{ item.exchange }}</h3>
+          <div class="title">{{ item.title }}</div>
+          <p class="content-txt">{{ item.content }}</p>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -27,7 +35,8 @@ export default {
   data () {
     return {
       timeValue: new Date(),
-      calendarData: []
+      calendarData: ['2020-12-11','2020-12-12'],
+      scheduleList: []
     }
   },
   created(){
@@ -35,14 +44,7 @@ export default {
 
     })
   },
-  mounted(){
-    this.calendarData.push({
-      months: [9,10],//当前月
-      days:[1,2,3],//天
-      content:'自定义要展示的内容'
-    })
-    console.log(this.calendarData)
-  },
+  mounted() { },
   methods:{
     //处理时间
     handleTime(s) {
@@ -57,7 +59,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .calendar-wrap {
   width: 100%;
   height: 100%;
@@ -77,10 +79,6 @@ export default {
   color: #F8A535;
   font-size: 10px;
   margin-top: 5px;
-}
-
-#calendar .el-button-group>.el-button:not(:first-child):not(:last-child):after {
-  content: '当月';
 }
 
 .content-txt{
