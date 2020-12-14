@@ -25,10 +25,12 @@ function resFun (response) {
     if (code !== SERVICE_STATUS_SUCCESS) {
         if(code === SERVICE_STATUS_FAILED) {
             // 未登录
-            Message({
-                message: msg || i18n.t('sqlStat.notLogin'),
-                type: 'error',
-                duration: 5 * 10000
+            store.dispatch('user/resetToken').then(() => {
+                Message({
+                    message: msg || i18n.t('sqlStat.notLogin'),
+                    type: 'error',
+                    duration: 5 * 10000
+                })
             })
         }
         return Promise.reject(

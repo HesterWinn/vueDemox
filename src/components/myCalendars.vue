@@ -59,6 +59,7 @@ export default {
       timeValue: new Date(),
       calendarData: [],
       isLoading: false,
+      token: this.$store.state.user.token,
       scheduleList: []
     }
   },
@@ -73,6 +74,19 @@ export default {
   mounted() { },
 
   methods:{
+    logout(){
+      // return this.$store.dispatch('user/logout')
+      this.$store
+        .dispatch('user/logout', {
+          token: ''
+        })
+        .then(res => {
+          location.reload()
+        })
+        .catch(error => {
+          
+        })
+    },
     // 获取当月日历
     getCalendarStatus(){
       var data = {
