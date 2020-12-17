@@ -4,7 +4,7 @@ import { EN_US_LANG_ID, ZH_CN_LANG_ID } from '../constants'
  * 非英语系的，缺省语言为zh
  * @returns {string}
  */
-export function getLocalLang () {
+export function getLocaleLang () {
     const languages = navigator.languages
     if (
         !languages ||

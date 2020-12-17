@@ -59,7 +59,7 @@ export default {
       timeValue: new Date(),
       calendarData: [],
       isLoading: false,
-      token: this.$store.state.user.token,
+      // token: this.$store.state.user.token,
       scheduleList: []
     }
   },

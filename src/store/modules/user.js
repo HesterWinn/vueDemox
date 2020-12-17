@@ -23,7 +23,7 @@ const actions = {
     }
 }
 
-resetToken({ commit }, payload) {
+function resetToken({ commit }, payload) {
     return new Promise(resolve => {
         commit('SET_TOKEN', '')
     })

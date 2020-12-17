@@ -3,7 +3,7 @@ import { Message } from 'element-ui'
 import { getLocaleLang } from '@/utils'
 import i18n from '@/i18n'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { getToken } from '@/utils/author'
 import {
     SERVICE_STATUS_SUCCESS,
     SERVICE_STATUS_FAILED

@@ -10,7 +10,7 @@ const store = new Vuex.Store({
         user
     },
     getters,
-    strict: debug
+    // strict: debug
 })
 
 export default store
